@@ -1,5 +1,4 @@
-const Alumno = require("./modulos/alumno");
-const estudiantes = require('./modulos/estudiantes')
+const {estudiantes,Alumno} = require("./modulos/alumno");
 
 /*
 let a1 = new Alumno("Alumno 1", 0, 10, 10, 10, 10, 10);//true
@@ -13,14 +12,14 @@ let a6 = new Alumno("Alumno 6", 3, 1, 1, 1, 1, 1);//false
 
 let curso = {
     nombreCurso: "Programacion Imperativa",
-    notaAprobacion: 7,
-    faltasMaximas: 4,
+    notaAprobacion: 6,
+    faltasMaximas: 2,
     listaEstudiantes: estudiantes,
     agregarAlumno: function (nuevoAlumno) {
         this.listaEstudiantes.push(nuevoAlumno);
     },
     aprobado: function (alumno) {
-        return alumno.promedio() >= 7
+        return alumno.promedio() > this.notaAprobacion
             ? alumno.cantidadFaltas < this.faltasMaximas
                 ? true
                 : alumno.cantidadFaltas == this.faltasMaximas && alumno.promedio() > (this.notaAprobacion * 1.1)
@@ -37,5 +36,5 @@ let curso = {
     }
 
 };
-curso.listaEstudiantes[0].faltar()
-console.log(curso.listaEstudiantes[0])
+
+console.log(curso.recorrerLista())
